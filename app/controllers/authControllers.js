@@ -16,9 +16,17 @@ const register = async (req, res, next) => {
     const hash = bcrypt.hashSync(req.body.password, salt);
     const email = req.body.email
 
+    const emailUser = await Users.findOne({email: email, })
+
+    if (emailUser) {
+      return res.status(400).json({ status: "failed", message: "Email already exist", })
+    } 
+
     const newUser = new Users({
       ...req.body,
       password: hash,
+      isEmailVerified: false,
+      role: "user",
     });
     await newUser.save();
   
@@ -54,14 +62,14 @@ const register = async (req, res, next) => {
 const verified = async (req, res) => {
   try {
     const { token, } = req.body
-    const cekToken = await Verify.findOne({tokenVerify: token, })
-    const ExpiredDate = cekToken.expiredAt
+    const checkToken = await Verify.findOne({tokenVerify: token, })
+    const ExpiredDate = checkToken.expiredAt
     const dateNow = Date.now()
     if (dateNow >= ExpiredDate) {
       return res.status(400).json({ status: "failed", message: "expired token", })
     }
     const userVerify = await Users.findByIdAndUpdate(
-      cekToken.idUser,
+      checkToken.idUser,
       { $set: { isEmailVerified: true, } },
       { new: true }
     )
