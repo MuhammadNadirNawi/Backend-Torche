@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema(
     department: {type: String, required: true,},
     batch: { type: Number, required: true, },
     knowFrom: { type: String, required: true, },
-    isEmailVerified: { type: Boolean, required: true, default: false },
+    isEmailVerified: { type: Boolean, required: true},
+    role: { type: String, required: true},
   },
   { timestamps: true }
   );
