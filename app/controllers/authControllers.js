@@ -113,8 +113,7 @@ const signin = async (req, res) => {
       knowFrom,
     })
     res.cookie("acces_token", token, {
-      httpOnly: true,
-      secure: true,
+      httpOnly: true,  
     }).status(200).json({ status: "success", message: "Login successfully", data: user, token, })
   } catch (error) {
     return res.status(500).send({ message: error.message, })

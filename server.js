@@ -4,6 +4,8 @@ const connection = require("./config/database");
 const routes = require("./routers");
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const {authUser} = require("./middleware/auth");
+
 
 
 dotenv.config();
@@ -14,7 +16,7 @@ app.use(routes);
 app.use(cookieParser())
 app.use(cors())  
 
-app.get('/', (req, res) => {
+app.get('/', authUser, (req, res) => {
   res.send('Hello World');
 });
 
