@@ -18,15 +18,5 @@ const userSchema = new mongoose.Schema(
 
 const Users = mongoose.model("Users", userSchema);
 
-const verifySchema = new mongoose.Schema(
-  {
-    idUser: { type:  mongoose.Types.ObjectId, ref: 'Users' },
-    tokenVerify: { type: String, required: true,},
-    expiredAt: {type: Date, required: true,},
-  },
-  { timestamps: true }
-  );
 
-const Verify = mongoose.model("Verify", verifySchema);
-
-module.exports = { Users, Verify};
+module.exports = Users;

@@ -1,4 +1,5 @@
-const {Users, Verify} = require("../models/users");
+const Users = require("../models/users");
+const Verify = require("../models/verify");
 const bcrypt = require("bcrypt")
 const { v4: uuidv4, } = require("uuid")
 const tokenVerify = uuidv4()
@@ -107,7 +108,7 @@ const signin = async (req, res) => {
       return res.status(404).json({ status: "failed", message: "Account Not Verified", })
     }
 
-    const { _id, fullName, email, password, university, phone, department, batch, knowFrom, } = user
+    const { _id, fullName, email, password, university, phone, department, batch, knowFrom, role} = user
 
     const token = createToken({
       _id,
@@ -119,6 +120,7 @@ const signin = async (req, res) => {
       department,
       batch,
       knowFrom,
+      role,
     })
     res.cookie("acces_token", token, {
       httpOnly: true,  
