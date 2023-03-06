@@ -65,8 +65,12 @@ const findReviewTutorById = async (req, res) => {
 
 const findReviewTutorByUser = async (req, res) => {
   try {
+    const user = await Users.findById(req.body.idUser);
+    if (!user) {
+      return res.status(404).json({ status: "failed", message: "Users Not Found.", })
+    }
     const reviewTutor = await ReviewTutor.find({idUser: req.body.idUser});
-    if(!reviewTutor) {
+    if(reviewTutor.length == 0) {
       return res.status(404).send({ message: "reviews not found", })
     }
     res.status(200).json({
@@ -81,8 +85,12 @@ const findReviewTutorByUser = async (req, res) => {
 
 const findReviewTutorByTutor = async (req, res) => {
   try {
+    const tutor = await Tutors.findById(req.body.idTutor);
+    if (!tutor) {
+      return res.status(404).json({ status: "failed", message: "Tutors Not Found.", })
+    }
     const reviewTutor = await ReviewTutor.find({idTutor: req.body.idTutor});
-    if(!reviewTutor) {
+    if(reviewTutor.length == 0) {
       return res.status(404).send({ message: "reviews not found", })
     }
     res.status(200).json({
