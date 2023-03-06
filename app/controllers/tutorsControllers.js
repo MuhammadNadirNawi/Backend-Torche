@@ -32,6 +32,9 @@ const findAllTutors = async (req, res) => {
 const findTutorsById = async (req, res) => {
   try {
     const tutors = await Tutors.findById(req.params.id);
+    if(!tutors) {
+      return res.status(404).send({ message: "tutors not found", })
+    }
     res.status(200).json({status: "success", message: "success get tutor", data: tutors, });
   } catch (error) {
     return res.status(500).send({ message: error.message, })
