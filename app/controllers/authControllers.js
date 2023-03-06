@@ -105,7 +105,7 @@ const signin = async (req, res) => {
 
     const verifikasi = user.isEmailVerified
     if (!verifikasi) {
-      return res.status(404).json({ status: "failed", message: "Account Not Verified", })
+      return res.status(401).json({ status: "failed", message: "Account Not Verified", })
     }
 
     const { _id, fullName, email, password, university, phone, department, batch, knowFrom, role} = user
