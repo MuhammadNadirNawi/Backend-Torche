@@ -30,7 +30,7 @@ const verifyToken = async(req, res, next) => {
 }
 
 const authUser = (req, res, next) => {
-  if (req.user._id == req.params.id ) {
+  if (req.user._id == req.params.id || req.user.role == "admin") {
     next()
   } else {
     res.status(401).json({
