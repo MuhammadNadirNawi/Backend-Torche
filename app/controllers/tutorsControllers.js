@@ -4,8 +4,12 @@ const createTutors = async (req, res) => {
   try {
 
     const newTutor = new Tutors(req.body)
-    const tutor = await newTutor.save();
-    res.status(201).json({status: "success", message: "success create new mentor", data: {tutor},});
+    const tutor = await Tutors.findOne({ tutorName: newTutor.tutorName });
+    if (tutor) {
+      return res.status(400).json({ status: "failed", message: "Tutor already exist.", })
+    }
+    const tutors = await newTutor.save();
+    res.status(201).json({status: "success", message: "success create new mentor", data: {tutors},});
   } catch (error) {
     res.status(error.statusCode || 500).json({
       message: error.message,
