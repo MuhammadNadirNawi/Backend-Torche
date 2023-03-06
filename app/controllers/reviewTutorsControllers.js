@@ -6,20 +6,17 @@ const Users = require("../models/users");
 const createReviewTutor = async (req, res) => {
   try {
     const newReviewTutor = new ReviewTutor(req.body);
-    const tutor = await Tutors.findById(newReviewTutor.tutorId);
-    if (tutor) {
-      return res.status(404).json({ status: "failed", message: "Tutors Not Found.", })
-    }
-    const user = await Users.findById(newReviewTutor.userId);
-    if (user) {
+    const user = await Users.findById(newReviewTutor.idUser);
+    const tutor = await Tutors.findById(newReviewTutor.idTutor);
+    if (!user) {
       return res.status(404).json({ status: "failed", message: "Users Not Found.", })
+    }
+    if (!tutor) {
+      return res.status(404).json({ status: "failed", message: "Tutors Not Found.", })
     }
     const userReview = await ReviewTutor.findOne({userId: newReviewTutor.userId, tutorId: newReviewTutor.tutorId});
     if (userReview) {
       return res.status(404).json({ status: "failed", message: "Users Already Review for the tutor.", })
-    }
-    if (user) {
-      return res.status(404).json({ status: "failed", message: "Users Not Found.", })
     }
     const reviewTutor = await newReviewTutor.save();
     res.status(201).json({
