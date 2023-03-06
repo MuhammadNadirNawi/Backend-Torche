@@ -14,6 +14,13 @@ const createReviewTutor = async (req, res) => {
     if (user) {
       return res.status(404).json({ status: "failed", message: "Users Not Found.", })
     }
+    const userReview = await ReviewTutor.findOne({userId: newReviewTutor.userId, tutorId: newReviewTutor.tutorId});
+    if (userReview) {
+      return res.status(404).json({ status: "failed", message: "Users Already Review for the tutor.", })
+    }
+    if (user) {
+      return res.status(404).json({ status: "failed", message: "Users Not Found.", })
+    }
     const reviewTutor = await newReviewTutor.save();
     res.status(201).json({
       status: "success",
