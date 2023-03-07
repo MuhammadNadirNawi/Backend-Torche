@@ -18,6 +18,9 @@ registerValidation = [
     .matches(/.+\@.+\..+/)
     .withMessage("This email is invalid. Make sure it's written like  example@email.com"),
   check("password", "password is required").notEmpty().isLength({ min: 8 }).withMessage("Your password is too short"),
+];
+
+FirstSignValidation = [
   check("phone", "phone number is required").notEmpty(),
   check("university", "university is required").notEmpty(),
   check("department", "department is required").notEmpty(),
@@ -37,4 +40,5 @@ module.exports = {
   registerValidation,
   loginValidation,
   runValidation,
+  FirstSignValidation
 }
