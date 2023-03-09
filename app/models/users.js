@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     university: {type: String,},
     department: {type: String,},
     batch: { type: Number, },
-    knowFrom: [knowFromSchema],
+    knowFrom: { type: [String], },
     isEmailVerified: { type: Boolean, required: true},
     role: { type: String, required: true},
   },
