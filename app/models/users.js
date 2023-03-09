@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 
+const knowFromSchema = new mongoose.Schema({
+  field: { type: String, },
+  });
+
 const userSchema = new mongoose.Schema(
   {
     email: { type: String, required: true,},
@@ -9,7 +13,7 @@ const userSchema = new mongoose.Schema(
     university: {type: String,},
     department: {type: String,},
     batch: { type: Number, },
-    knowFrom: { type: String, },
+    knowFrom: [knowFromSchema],
     isEmailVerified: { type: Boolean, required: true},
     role: { type: String, required: true},
   },
