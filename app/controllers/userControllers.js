@@ -1,4 +1,6 @@
 const Users = require("../models/users");
+const bcrypt = require("bcrypt")
+
 
 const findAllUsers = async (req, res) => {
   try {
@@ -26,9 +28,11 @@ const findUsersById = async (req, res) => {
 
 const updateUsersById = async (req, res) => {
   try {
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt);
     const user = await Users.findByIdAndUpdate(
       req.params.id,
-      { $set: req.body },
+      { $set: {...req.body, password: hash,} },
       { new: true }
     );
     if(!user) {
