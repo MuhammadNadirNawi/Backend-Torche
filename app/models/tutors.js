@@ -39,6 +39,7 @@ const tutorSchema = new mongoose.Schema(
     image: { type: String, required: true, default: "https://ik.imagekit.io/wx1jhmfkq/IMG-1672906796513_OHzwBXRTs.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1672906800948" },
     bestTutorOfTheMonth: { type: Boolean, required: true, default: false },
   },
+  { timestamps: true }
   );
 
   const Tutors = mongoose.model("Tutors", tutorSchema);
