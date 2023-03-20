@@ -3,12 +3,12 @@ const reviewCoursesControllers  = require("../app/controllers/reviewCoursesContr
 const {verifyToken, authUser} = require("../middleware/auth");
 
 
-router.post('/api/reviews/courses/create', verifyToken, authUser, reviewCoursesControllers.createReviewCourse);
+router.post('/api/reviews/courses/create', verifyToken, reviewCoursesControllers.createReviewCourse);
 router.get('/api/reviews/courses/findAll', reviewCoursesControllers.findAllReviewCourse);
 router.get('/api/reviews/courses/byUser', reviewCoursesControllers.findReviewCourseByUser);
 router.get('/api/reviews/courses/byTutor', reviewCoursesControllers.findReviewCourseByCourse);
 router.get('/api/reviews/courses/:id', reviewCoursesControllers.findReviewCourseById);
-router.put('/api/reviews/courses/update/:id', verifyToken, authUser, reviewCoursesControllers.updateReviewCoursesById);
-router.delete('/api/reviews/courses/delete/:id', verifyToken, authUser, reviewCoursesControllers.deleteReviewCoursesById);
+router.put('/api/reviews/courses/update/:id', verifyToken, reviewCoursesControllers.updateReviewCoursesById);
+router.delete('/api/reviews/courses/delete/:id', verifyToken, reviewCoursesControllers.deleteReviewCoursesById);
 
 module.exports = router
