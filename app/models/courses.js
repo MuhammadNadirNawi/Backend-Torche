@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 
+const subSubjectSchema = new mongoose.Schema({
+  field: { type: String, required: true },
+  });
+
+
 const moduleSchema = new mongoose.Schema({
   nameSubject: { type: String, required: true },
   description: { type: String, required: true },
-  subSubject: { type: String, required: true },
+  subSubject: [subSubjectSchema],
   });
 
 const tutorsCourseSchema = new mongoose.Schema({
