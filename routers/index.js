@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const cors = require("cors")
 const cookieParser = require('cookie-parser')
+const session = require('express-session')
 
 
 const tutors = require('./tutors')
@@ -9,6 +10,9 @@ const users = require('./users')
 const reviewTutor = require('./ReviewTutor')
 const courses = require('./courses')
 const reviewCourse = require('./reviewCourse')
+const registerCourse = require('./registerCourse')
+const methodCourse = require('./methodCourse')
+const paymentGateway = require('./paymentGateway')
 
 router.use(cors())
 router.use(cookieParser())
@@ -18,5 +22,16 @@ router.use(users)
 router.use(reviewTutor)
 router.use(courses)
 router.use(reviewCourse)
+router.use(registerCourse)
+router.use(methodCourse)
+router.use(paymentGateway)
+// router.use(
+// 	session({
+// 		secret: "secr3t",
+//     resave: false,
+//     saveUninitialized: true,
+// 		cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
+// 	})
+// );
 
 module.exports = router
