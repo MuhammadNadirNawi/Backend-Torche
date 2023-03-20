@@ -3,6 +3,6 @@ const PaymentGatewayControllers  = require("../app/controllers/paymentGatewayCon
 const {verifyToken, authUser} = require("../middleware/auth");
 
 
-router.post('/api/payment/courses', verifyToken,  authUser, PaymentGatewayControllers.handleMainRequest);
+router.post('/api/payment/courses', verifyToken, PaymentGatewayControllers.handleMainRequest);
 
 module.exports = router
