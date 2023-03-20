@@ -96,7 +96,7 @@ const findReviewCourseByCourse = async (req, res) => {
     res.status(200).json({
       status: "success",
       message: "success get review by tutor",
-      data: reviewTutor,
+      data: reviewCourse,
     });
   } catch (error) {
     return res.status(500).send({ message: error.message, });
