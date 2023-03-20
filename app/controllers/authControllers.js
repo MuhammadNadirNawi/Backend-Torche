@@ -123,7 +123,9 @@ const signin = async (req, res) => {
       role,
     })
     res.cookie("access_token", token, {
+      expires: new Date(Date.now() + 86400000),
       httpOnly: true,  
+      secure: true,
     }).status(200).json({ status: "success", message: "Login successfully", data: user, token, })
   } catch (error) {
     return res.status(500).send({ message: error.message, })
