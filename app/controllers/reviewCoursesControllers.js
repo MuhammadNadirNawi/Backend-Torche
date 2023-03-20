@@ -33,7 +33,7 @@ const createReviewCourse = async (req, res) => {
 
 const findAllReviewCourse = async (req, res) => {
   try {
-    const reviewCourses = await reviewCourse.find();
+    const reviewCourses = await ReviewCourse.find();
     if (reviewCourses.length == 0) {
       return res.status(404).send({ message: "reviews not found", });
     }
