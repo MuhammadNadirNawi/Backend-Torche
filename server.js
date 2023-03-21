@@ -7,6 +7,7 @@ const cors = require('cors')
 const passport = require("passport");
 passportStrategy = require('./app/controllers/passport')
 const session = require('express-session')
+const helmet = require("helmet")
 
 
 dotenv.config();
@@ -26,6 +27,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(routes);
+app.use(helmet())
 
 connectDatabase();
 
