@@ -19,7 +19,7 @@ const createTutors = async (req, res) => {
 
 const findAllTutors = async (req, res) => {
   try {
-    const tutors = await Tutors.find();
+    const tutors = await Tutors.find().lean();
     if(tutors.length == 0) { 
       return res.status(404).send({ message: "no tutors found", })
     }
