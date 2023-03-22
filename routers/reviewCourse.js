@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const reviewCoursesControllers  = require("../app/controllers/reviewCoursesControllers");
 const {verifyToken, authUser} = require("../middleware/auth");
-const {createCourseValidation, runValidation} = require("../validation/index");
+const {createReviewCourseValidation, runValidation} = require("../validation/index");
 
 
 router.post('/api/reviews/courses/create', verifyToken, createReviewCourseValidation, runValidation, reviewCoursesControllers.createReviewCourse);
