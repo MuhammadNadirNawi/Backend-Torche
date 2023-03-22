@@ -37,7 +37,7 @@ loginValidation = [
 ];
 
 createTutorValidation = [
-  check("tutorName", "tutorName number is required").notEmpty(),
+  check("tutorName", "tutorName is required").notEmpty(),
   check("description", "description is required").notEmpty(),
   check("specialist", "specialist is required").notEmpty(),
   check("socialMedia", "socialMedia is required").notEmpty(),
