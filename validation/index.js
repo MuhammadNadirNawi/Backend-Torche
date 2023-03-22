@@ -74,6 +74,21 @@ createMethodCourseValidation = [
   check("benefit", "benefit is required").notEmpty(),
 ];
 
+createRegisterCourseValidation = [
+  check("email", "email is required").notEmpty(),
+  check("fullName", "fullName is required").notEmpty(),
+  check("phone", "phone is required").notEmpty(),
+  check("university", "university is required").notEmpty(),
+  check("department", "department is required").notEmpty(),
+  check("batch", "batch is required").notEmpty(),
+  check("knowFrom", "knowFrom is required").notEmpty(),
+  check("idMethodCourse", "idMethodCourse is required").notEmpty(),
+  check("idCourse", "idCourse is required").notEmpty(),
+  check("memberCourse", "memberCourse is required").notEmpty(),
+  check("sessionCourse", "sessionCourse is required").notEmpty(),
+  check("price", "price is required").notEmpty(),
+];
+
 module.exports = {
   registerValidation,
   loginValidation,
@@ -84,4 +99,5 @@ module.exports = {
   createCourseValidation,
   createReviewCourseValidation,
   createMethodCourseValidation,
+  createRegisterCourseValidation,
 }
