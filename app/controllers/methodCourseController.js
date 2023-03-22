@@ -41,7 +41,7 @@ const findMethodCourseById = async (req, res) => {
     if(!methodCourses) {
       return res.status(404).send({ message: "method course not found", })
     }
-    res.status(200).json({status: "success", message: "success get method course", data: tutors, });
+    res.status(200).json({status: "success", message: "success get method course", data: methodCourses, });
   } catch (error) {
     return res.status(500).send({ message: error.message, })
   }
