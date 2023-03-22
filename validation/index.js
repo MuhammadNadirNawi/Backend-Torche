@@ -45,6 +45,13 @@ createTutorValidation = [
   check("experience", "experience from is required").notEmpty(),
 ];
 
+createReviewTutorValidation = [
+  check("idUser", "idUser is required").notEmpty(),
+  check("idTutor", "idTutor is required").notEmpty(),
+  check("review", "review is required").notEmpty(),
+  check("rating", "rating is required").notEmpty(),
+];
+
 
 module.exports = {
   registerValidation,
@@ -52,4 +59,5 @@ module.exports = {
   runValidation,
   FirstSignValidation,
   createTutorValidation,
+  createReviewTutorValidation,
 }

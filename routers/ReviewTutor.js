@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const reviewTutorsControllers  = require("../app/controllers/reviewTutorsControllers");
 const {verifyToken, authUser} = require("../middleware/auth");
+const {createReviewTutorValidation, runValidation} = require("../validation/index");
 
 
-router.post('/api/reviews/tutors/create', verifyToken, reviewTutorsControllers.createReviewTutor);
+router.post('/api/reviews/tutors/create', verifyToken, createReviewTutorValidation, runValidation, reviewTutorsControllers.createReviewTutor);
 router.get('/api/reviews/tutors/findAll', reviewTutorsControllers.findAllReviewTutor);
 router.get('/api/reviews/tutors/byUser', reviewTutorsControllers.findReviewTutorByUser);
 router.get('/api/reviews/tutors/byTutor', reviewTutorsControllers.findReviewTutorByTutor);
