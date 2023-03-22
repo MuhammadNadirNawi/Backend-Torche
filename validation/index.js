@@ -61,6 +61,13 @@ createCourseValidation = [
   check("tutors", "tutors is required").notEmpty(),
 ];
 
+createReviewCourseValidation = [
+  check("idUser", "idUser is required").notEmpty(),
+  check("idCourse", "idCourse is required").notEmpty(),
+  check("review", "review is required").notEmpty(),
+  check("rating", "rating is required").notEmpty(),
+];
+
 
 module.exports = {
   registerValidation,
@@ -70,4 +77,5 @@ module.exports = {
   createTutorValidation,
   createReviewTutorValidation,
   createCourseValidation,
+  createReviewCourseValidation,
 }
