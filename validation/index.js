@@ -36,9 +36,20 @@ loginValidation = [
   check("password", "password is required").notEmpty().isLength({ min: 8 }).withMessage("Your password is too short"),
 ];
 
+createTutorValidation = [
+  check("tutorName", "tutorName number is required").notEmpty(),
+  check("description", "description is required").notEmpty(),
+  check("specialist", "specialist is required").notEmpty(),
+  check("socialMedia", "socialMedia is required").notEmpty(),
+  check("education", "education is required").notEmpty(),
+  check("experience", "experience from is required").notEmpty(),
+];
+
+
 module.exports = {
   registerValidation,
   loginValidation,
   runValidation,
-  FirstSignValidation
+  FirstSignValidation,
+  createTutorValidation,
 }
