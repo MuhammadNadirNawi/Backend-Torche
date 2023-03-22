@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const tutorsControllers  = require("../app/controllers/tutorsControllers");
 const {verifyToken, authAdmin} = require("../middleware/auth");
-const {createTutorValidation} = require("../validation/index");
+const {createTutorValidation, runValidation} = require("../validation/index");
 
 
 
