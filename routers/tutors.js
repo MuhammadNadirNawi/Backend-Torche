@@ -5,7 +5,7 @@ const {createTutorValidation} = require("../validation/index");
 
 
 
-router.post('/api/tutors/create', verifyToken, authAdmin, createTutorValidation, tutorsControllers.createTutors);
+router.post('/api/tutors/create', verifyToken, authAdmin, createTutorValidation, runValidation, tutorsControllers.createTutors);
 router.get('/api/tutors/findAll', tutorsControllers.findAllTutors);
 router.get('/api/tutors/:id', tutorsControllers.findTutorsById);
 router.put('/api/tutors/update/:id', verifyToken, authAdmin, tutorsControllers.updateTutorsById);
