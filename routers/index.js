@@ -14,6 +14,7 @@ const registerCourse = require('./registerCourse')
 const methodCourse = require('./methodCourse')
 const paymentGateway = require('./paymentGateway')
 const events = require('./events')
+const services = require('./services')
 
 router.use(cors())
 router.use(cookieParser())
@@ -27,6 +28,7 @@ router.use(registerCourse)
 router.use(methodCourse)
 router.use(paymentGateway)
 router.use(events)
+router.use(services)
 // router.use(
 // 	session({
 // 		secret: "secr3t",
