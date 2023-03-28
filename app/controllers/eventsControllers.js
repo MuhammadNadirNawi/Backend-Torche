@@ -91,10 +91,10 @@ const searchingEvents = async (req, res) => {
   let sortBy = {createdAt: -1};
   if (req.query.sortByDate != undefined) {
     if (req.query.sortByDate == "asc") {
-      sortBy = { createdAt: 1 }
+      sortBy = { createdAt: -1 }
     } 
     else if (req.query.sortByDate == "desc") {
-      sortBy = { createdAt: -1 }
+      sortBy = { createdAt: 1 }
     }
   }
   else if (req.query.sortByName != undefined) {
